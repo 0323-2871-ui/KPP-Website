@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Confirmation</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:linear-gradient(to right,#e3f2fd,#bbdefb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    width:350px;
+    text-align:center;
+}
+
+h2{
+    color:#1565c0;
+}
+
+p{
+    margin:8px 0;
+    color:#444;
+}
+
+.btn{
+    margin-top:15px;
+    padding:12px;
+    width:100%;
+    border:none;
+    border-radius:25px;
+    background:linear-gradient(to right,#1565c0,#42a5f5);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Payment Confirmed ✅</h2>
+
+    <p><b>Name:</b> <span id="name"></span></p>
+    <p><b>Package:</b> <span id="package"></span></p>
+    <p><b>Method:</b> <span id="method"></span></p>
+    <p><b>Reference No:</b> <span id="ref"></span></p>
+
+    <button class="btn" onclick="goHome()">Back to Home</button>
+</div>
+
+<script>
+document.getElementById("name").innerText = localStorage.getItem("name");
+document.getElementById("package").innerText = localStorage.getItem("package");
+document.getElementById("method").innerText = localStorage.getItem("method");
+document.getElementById("ref").innerText = localStorage.getItem("ref");
+
+function goHome(){
+    window.location.href = "Home.html";
+}
+</script>
+
+</body>
+</html3E

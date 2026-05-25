@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Schedule</title>
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+}
+
+/* ===== BODY ===== */
+
+body{
+
+    background:
+    linear-gradient(
+    135deg,
+    #e3f2fd,
+    #bbdefb,
+    #fff9c4
+    );
+
+    font-family:Calibri;
+
+    overflow-x:hidden;
+
+    animation:pageFade 1s ease;
+}
+
+/* ===== PAGE TRANSITION ===== */
+
+@keyframes pageFade{
+
+from{
+    opacity:0;
+    transform:translateY(30px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+
+    background:
+    linear-gradient(
+    90deg,
+    #42a5f5,
+    #1e88e5
+    );
+
+    padding:15px 35px;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,0.2);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    animation:navSlide 1s ease;
+}
+
+/* NAVBAR ANIMATION */
+
+@keyframes navSlide{
+
+from{
+    opacity:0;
+    transform:translateY(-60px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+.navdiv{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+/* ===== LOGO ===== */
+
+.logo a{
+
+    font-size:38px;
+    font-weight:bold;
+    color:white;
+
+    letter-spacing:1px;
+
+    text-shadow:
+    2px 2px 6px rgba(0,0,0,0.3);
+}
+
+/* ===== NAVIGATION ===== */
+
+ul{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+li{
+    list-style:none;
+}
+
+/* NAV BUTTONS */
+
+li a{
+
+    color:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    transition:all 0.3s ease;
+
+    display:inline-block;
+}
+
+/* HOVER EFFECT */
+
+li a:hover{
+
+    background:white;
+
+    color:#1565c0;
+
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ACTIVE PAGE */
+
+.active{
+    background:white;
+    color:#1565c0;
+}
+
+/* ===== ENROLL BUTTON ===== */
+
+.button a{
+
+    background:
+    linear-gradient(
+    135deg,
+    #43e97b,
+    #38f9d7
+    );
+
+    color:#003049;
+
+    border-radius:30px;
+
+    padding:12px 22px;
+
+    font-weight:bold;
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* LIGHT EFFECT */
+
+.button a::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+    );
+
+    transition:0.7s;
+}
+
+.button a:hover::before{
+    left:100%;
+}
+
+.button a:hover{
+
+    background:white;
+
+    color:#1565c0;
+
+    transform:scale(1.05);
+}
+
+/* ===== SECTION ===== */
+
+.schedule-section{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:40px;
+}
+
+/* TITLE */
+
+.schedule-section h2{
+
+    text-align:center;
+
+    font-size:55px;
+
+    color:#1565c0;
+
+    margin-top:20px;
+    margin-bottom:10px;
+
+    text-shadow:
+    2px 2px 6px rgba(0,0,0,0.3);
+
+    animation:titleFade 1.3s ease;
+}
+
+.schedule-section p{
+
+    text-align:center;
+
+    color:#555;
+
+    font-size:20px;
+
+    margin-bottom:40px;
+
+    animation:titleFade 1.5s ease;
+}
+
+/* TITLE ANIMATION */
+
+@keyframes titleFade{
+
+from{
+    opacity:0;
+    transform:translateY(40px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== LAYOUT ===== */
+
+.schedule-container{
+
+    display:grid;
+
+    grid-template-columns:1.6fr 1fr;
+
+    gap:30px;
+}
+
+/* ===== CARDS ===== */
+
+.schedule-card,
+.info-card{
+
+    background:
+    rgba(255,255,255,0.98);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.15);
+
+    transition:0.4s;
+
+    animation:cardFade 1.2s ease;
+}
+
+/* CARD ENTRANCE */
+
+@keyframes cardFade{
+
+from{
+    opacity:0;
+    transform:translateY(60px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* CARD HOVER */
+
+.schedule-card:hover,
+.info-card:hover{
+
+    transform:
+    translateY(-8px)
+    scale(1.02);
+
+    box-shadow:
+    0 25px 45px rgba(0,0,0,0.2);
+}
+
+/* TOP BORDER */
+
+.schedule-card{
+    border-top:10px solid #ffca28;
+}
+
+.info-card{
+    border-top:10px solid #42a5f5;
+}
+
+/* HEADINGS */
+
+.schedule-card h3,
+.info-card h3{
+
+    color:#0d47a1;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+}
+
+/* ===== TABLE ===== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+
+    background:
+    linear-gradient(
+    to right,
+    #0d47a1,
+    #1976d2
+    );
+
+    color:white;
+
+    padding:15px;
+
+    font-size:16px;
+}
+
+td{
+
+    padding:14px;
+    font-size:14px;
+    line-height:1.6;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+    color:#333;
+
+    transition:0.3s;
+}
+.badge{
+    display:inline-block;
+    margin-bottom:5px;
+}
+tr:nth-child(even){
+    background:#e3f2fd;
+}
+
+/* ROW HOVER */
+
+tr:hover{
+
+    background:#fff3cd;
+
+    transform:scale(1.01);
+}
+
+/* ===== INFO LIST ===== */
+
+.info-card ul{
+    list-style:none;
+}
+
+.info-card li{
+
+    padding:12px 0;
+
+    border-bottom:1px dashed #ccc;
+
+    color:#333;
+
+    transition:0.3s;
+}
+
+.info-card li:hover{
+
+    padding-left:10px;
+
+    color:#1565c0;
+}
+
+/* ===== BADGE ===== */
+
+.badge{
+
+    background:
+    linear-gradient(
+    to right,
+    #ff9800,
+    #ffca28
+    );
+
+    color:#fff;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:950px){
+
+.schedule-container{
+    grid-template-columns:1fr;
+}
+
+.schedule-section h2{
+    font-size:42px;
+}
+
+.logo a{
+    font-size:28px;
+}
+
+ul{
+    justify-content:center;
+}
+
+li a{
+    font-size:15px;
+    padding:10px 12px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar">
+
+<div class="navdiv">
+
+<div class="logo">
+
+<a href="#">
+KPP MINDS TUTORIAL
+</a>
+
+</div>
+
+<ul>
+
+<li>
+<a href="Home.html">
+🏠 Home
+</a>
+</li>
+
+<li>
+<a href="About Us.html">
+📘 About Us
+</a>
+</li>
+
+<li>
+<a href="Package.html">
+💎 Package
+</a>
+</li>
+
+<li>
+<a class="active"
+href="Schedule.html">
+
+📅 Schedule
+
+</a>
+</li>
+
+<li>
+<a href="Contact.html">
+📞 Contact
+</a>
+</li>
+
+<li class="button">
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSft3FfnESHjEXIvSzd8L-JqbxDbIkRT5ecdHAoe9JH8Ru4JMA/viewform?usp=publish-editor">
+
+✨ ENROLL NOW
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+<!-- SECTION -->
+
+<section class="schedule-section">
+
+<h2>
+Class Schedule
+</h2>
+
+<p>
+Flexible, fun, and student-friendly learning hours designed for everyone.
+</p>
+
+<div class="schedule-container">
+
+<!-- LEFT -->
+
+<div class="schedule-card">
+
+<h3>
+Class Availability
+</h3>
+
+<table>
+
+<tr>
+<td>Monday</td>
+<td>8AM - 9AM | 9AM - 10AM | 10AM - 11AM</td>
+<td>1PM - 2PM | 2PM - 3PM | 3PM - 4PM</td>
+<td>6PM - 7PM | 7PM - 8PM</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>8AM - 9AM | 9AM - 10AM | 10AM - 11AM</td>
+<td>1PM - 2PM | 2PM - 3PM | 3PM - 4PM</td>
+<td>6PM - 7PM | 7PM - 8PM</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>8AM - 9AM | 9AM - 10AM | 10AM - 11AM</td>
+<td>1PM - 2PM | 2PM - 3PM | 3PM - 4PM</td>
+<td>6PM - 7PM | 7PM - 8PM</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>8AM - 9AM | 9AM - 10AM | 10AM - 11AM</td>
+<td>1PM - 2PM | 2PM - 3PM | 3PM - 4PM</td>
+<td>6PM - 7PM | 7PM - 8PM</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>8AM - 9AM | 9AM - 10AM | 10AM - 11AM</td>
+<td>1PM - 2PM | 2PM - 3PM | 3PM - 4PM</td>
+<td>6PM - 7PM | 7PM - 8PM</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td colspan="3">
+<span class="badge">Special Review Sessions (Math, English, Science)</span><br>
+Small Group: 9AM - 12NN | 1PM - 4PM
+</td>
+</tr>
+
+<tr>
+<td>Sunday</td>
+<td colspan="3">
+<span class="badge">Optional Weekend Catch-up Class</span><br>
+By Appointment Only (Flexible Schedule)
+</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="info-card">
+
+<h3>
+Time Slots
+</h3>
+
+<ul>
+
+<li>
+⏰ 1 Hour Session
+</li>
+
+<li>
+⏰ 2 Hour Session
+</li>
+
+<li>
+⏰ Weekend Review Class
+</li>
+
+</ul>
+
+<h3>
+Flexibility
+</h3>
+
+<ul>
+
+<li>
+✔ Reschedule Allowed
+</li>
+
+<li>
+✔ Personalized Timetable
+</li>
+
+<li>
+✔ One-on-One or Group Class
+</li>
+
+</ul>
+
+<h3>
+Time Zone
+</h3>
+
+<ul>
+
+<li>
+🌍 Philippine Time (PHT)
+</li>
+
+<li>
+🌍 International Students Welcome
+</li>
+
+<li>
+🌍 Adjustable Schedule
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>

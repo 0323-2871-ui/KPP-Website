@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Contact</title>
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+}
+
+/* ===== BODY ===== */
+
+body{
+
+    background:
+    linear-gradient(
+    135deg,
+    #e3f2fd,
+    #bbdefb,
+    #fff9c4
+    );
+
+    font-family:Calibri;
+
+    overflow-x:hidden;
+
+    animation:pageFade 1s ease;
+}
+
+/* ===== PAGE TRANSITION ===== */
+
+@keyframes pageFade{
+
+from{
+    opacity:0;
+    transform:translateY(30px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+
+    background:
+    linear-gradient(
+    90deg,
+    #42a5f5,
+    #1e88e5
+    );
+
+    padding:15px 35px;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,0.2);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    animation:navSlide 1s ease;
+}
+
+/* NAVBAR ANIMATION */
+
+@keyframes navSlide{
+
+from{
+    opacity:0;
+    transform:translateY(-60px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+.navdiv{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+/* ===== LOGO ===== */
+
+.logo a{
+
+    font-size:38px;
+    font-weight:bold;
+
+    color:white;
+
+    letter-spacing:1px;
+
+    text-shadow:
+    2px 2px 6px rgba(0,0,0,0.3);
+}
+
+/* ===== NAVIGATION ===== */
+
+ul{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+li{
+    list-style:none;
+}
+
+/* NAVIGATION BUTTONS */
+
+li a{
+
+    color:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    transition:all 0.3s ease;
+
+    display:inline-block;
+}
+
+/* HOVER EFFECT */
+
+li a:hover{
+
+    background:white;
+
+    color:#1565c0;
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ACTIVE PAGE */
+
+.active{
+    background:white;
+    color:#1565c0;
+}
+
+/* ===== ENROLL BUTTON ===== */
+
+.button a{
+
+    background:
+    linear-gradient(
+    135deg,
+    #43e97b,
+    #38f9d7
+    );
+
+    color:#003049;
+
+    border-radius:30px;
+
+    padding:12px 22px;
+
+    font-weight:bold;
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* SHINE EFFECT */
+
+.button a::before{
+
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+    );
+
+    transition:0.7s;
+}
+
+.button a:hover::before{
+    left:100%;
+}
+
+.button a:hover{
+
+    background:white;
+
+    color:#1565c0;
+
+    transform:scale(1.05);
+}
+
+/* ===== CONTACT SECTION ===== */
+
+.contact-section{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:50px 30px;
+
+    text-align:center;
+}
+
+/* TITLE */
+
+.contact-section h2{
+
+    font-size:55px;
+
+    color:#1565c0;
+
+    text-shadow:
+    2px 2px 6px rgba(0,0,0,0.3);
+
+    margin-top:20px;
+
+    animation:titleFade 1.2s ease;
+}
+
+.contact-section p{
+
+    color:#333;
+
+    font-size:20px;
+
+    margin-bottom:35px;
+
+    animation:titleFade 1.4s ease;
+}
+
+/* TITLE ANIMATION */
+
+@keyframes titleFade{
+
+from{
+    opacity:0;
+    transform:translateY(40px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== LAYOUT ===== */
+
+.contact-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+}
+
+/* ===== CONTACT CARD ===== */
+
+.contact-card,
+.info-box{
+
+    background:
+    rgba(255,255,255,0.98);
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.15);
+
+    transition:0.4s;
+
+    animation:cardFade 1.2s ease;
+}
+
+/* CARD ANIMATION */
+
+@keyframes cardFade{
+
+from{
+    opacity:0;
+    transform:translateY(60px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* HOVER EFFECT */
+
+.contact-card:hover,
+.info-box:hover{
+
+    transform:
+    translateY(-8px)
+    scale(1.02);
+
+    box-shadow:
+    0 25px 45px rgba(0,0,0,0.2);
+}
+
+/* BORDER TOP */
+
+.contact-card{
+    border-top:10px solid #ffca28;
+    text-align:left;
+}
+
+.info-box{
+    border-top:10px solid #42a5f5;
+    text-align:left;
+}
+
+/* HEADINGS */
+
+.contact-card h3,
+.info-box h3{
+
+    color:#0d47a1;
+
+    margin-bottom:18px;
+
+    font-size:28px;
+}
+
+/* ===== INPUTS ===== */
+
+.input-box{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:12px 0;
+
+    border-radius:12px;
+
+    border:1px solid #ccc;
+
+    outline:none;
+
+    font-size:16px;
+
+    transition:0.3s;
+}
+
+/* INPUT FOCUS */
+
+.input-box:focus{
+
+    border:2px solid #1976d2;
+
+    box-shadow:
+    0 0 10px rgba(25,118,210,0.2);
+
+    transform:scale(1.01);
+}
+
+/* ===== BUTTON ===== */
+
+.btn{
+
+    width:100%;
+
+    padding:15px;
+
+    background:
+    linear-gradient(
+    to right,
+    #0d47a1,
+    #1976d2
+    );
+
+    color:white;
+
+    border:none;
+
+    border-radius:30px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    margin-top:12px;
+
+    transition:0.3s;
+}
+
+/* BUTTON HOVER */
+
+.btn:hover{
+
+    background:
+    linear-gradient(
+    to right,
+    #002171,
+    #0d47a1
+    );
+
+    transform:
+    translateY(-3px)
+    scale(1.02);
+
+    box-shadow:
+    0 8px 18px rgba(0,0,0,0.2);
+}
+
+/* ===== INFO ===== */
+
+.info-box p{
+
+    margin:14px 0;
+
+    color:#333;
+
+    font-size:17px;
+
+    transition:0.3s;
+}
+
+.info-box p:hover{
+
+    color:#1565c0;
+
+    padding-left:8px;
+}
+
+/* ===== BADGE ===== */
+
+.badge{
+
+    display:inline-block;
+
+    background:
+    linear-gradient(
+    to right,
+    #ff9800,
+    #ffca28
+    );
+
+    color:#fff;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+.contact-container{
+    grid-template-columns:1fr;
+}
+
+.contact-section h2{
+    font-size:42px;
+}
+
+.logo a{
+    font-size:28px;
+}
+
+ul{
+    justify-content:center;
+}
+
+li a{
+    font-size:15px;
+    padding:10px 12px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="navbar">
+
+<div class="navdiv">
+
+<div class="logo">
+
+<a href="#">
+KPP MINDS TUTORIAL
+</a>
+
+</div>
+
+<ul>
+
+<li>
+<a href="Home.html">
+🏠 Home
+</a>
+</li>
+
+<li>
+<a href="About Us.html">
+📘 About Us
+</a>
+</li>
+
+<li>
+<a href="Package.html">
+💎 Package
+</a>
+</li>
+
+<li>
+<a href="Schedule.html">
+📅 Schedule
+</a>
+</li>
+
+<li>
+<a class="active"
+href="Contact.html">
+
+📞 Contact
+
+</a>
+</li>
+
+<li class="button">
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSft3FfnESHjEXIvSzd8L-JqbxDbIkRT5ecdHAoe9JH8Ru4JMA/viewform?usp=publish-editor">
+
+✨ ENROLL NOW
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+<!-- CONTACT SECTION -->
+
+<section class="contact-section">
+
+<h2>
+Contact Us
+</h2>
+
+<p>
+We are ready to help you anytime!
+</p>
+
+<div class="contact-container">
+
+<!-- FORM -->
+
+<div class="contact-card">
+
+<h3>
+Send a Message
+</h3>
+
+<input
+type="text"
+class="input-box"
+placeholder="Your Name">
+
+<input
+type="email"
+class="input-box"
+placeholder="Your Email">
+
+<input
+type="text"
+class="input-box"
+placeholder="Subject">
+
+<textarea
+class="input-box"
+rows="5"
+placeholder="Your Message"></textarea>
+
+<button
+class="btn"
+onclick="this.innerHTML='Message Sent ✔';">
+
+Submit
+
+</button>
+
+</div>
+
+<!-- INFO -->
+
+<div class="info-box">
+
+<h3>
+Get in Touch
+</h3>
+
+<p>
+📍 Location: Tiaong, Laguna
+</p>
+
+<p>
+📞 Phone: 0911-111-2222
+</p>
+
+<p>
+📧 Email: kpptutorial@gmail.com
+</p>
+
+<p>
+<span class="badge">
+Open
+</span>
+
+Monday - Saturday
+</p>
+
+<h3>
+Follow Us
+</h3>
+
+<p>
+Facebook: KPP Tutorial Minds
+</p>
+
+<p>
+Instagram: @kpptutorialminds
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>

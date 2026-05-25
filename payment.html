@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Page</title>
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+body{
+    font-family:Arial;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    /* ✨ LUXURY AURORA BACKGROUND */
+    background: linear-gradient(
+        135deg,
+        #0f2027,
+        #203a43,
+        #2c5364
+    );
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* ===== AURORA BACKGROUND EFFECT ===== */
+
+.aurora::before,
+.aurora::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(140px);
+    opacity:0.6;
+    z-index:-1;
+    animation:float 10s infinite ease-in-out;
+}
+
+/* BLUE LIGHT */
+.aurora::before{
+    background:#42a5f5;
+    top:-100px;
+    left:-120px;
+}
+
+/* PURPLE LIGHT */
+.aurora::after{
+    background:#7e57c2;
+    bottom:-120px;
+    right:-100px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px) scale(1);}
+    50%{transform:translateY(-40px) scale(1.15);}
+    100%{transform:translateY(0px) scale(1);}
+}
+
+/* CARD */
+.container{
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.3);
+
+    padding:30px;
+    width:90%;
+    max-width:450px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    animation:fadeIn 0.6s ease;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+h2{
+    text-align:center;
+    color:#1565c0;
+    margin-bottom:20px;
+}
+
+/* INPUTS */
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:12px;
+    border:1px solid #ccc;
+    outline:none;
+}
+
+input:focus, textarea:focus{
+    border:2px solid #42a5f5;
+}
+
+/* BUTTONS */
+.btn{
+    width:100%;
+    padding:14px;
+    margin-top:10px;
+    border:none;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(to right,#1565c0,#42a5f5);
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+
+.option{
+    display:flex;
+    gap:10px;
+}
+
+.option button{
+    flex:1;
+}
+
+.summary{
+    background:#f5f5f5;
+    padding:10px;
+    border-radius:12px;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ✨ BACKGROUND EFFECT -->
+<div class="aurora"></div>
+
+<div class="container">
+
+<h2>Payment Form</h2>
+
+<!-- PACKAGE SUMMARY -->
+<div class="summary" id="packageInfo">
+Package: Not Selected
+</div>
+
+<!-- NAME -->
+<input type="text" placeholder="Full Name" id="name">
+
+<!-- ADDRESS -->
+<textarea placeholder="Complete Address" id="address"></textarea>
+
+<!-- PAYMENT OPTIONS -->
+<div class="option">
+
+<button class="btn" onclick="pay('GCash')">
+📲 GCash
+</button>
+
+<button class="btn" onclick="pay('Bank')">
+🏦 Bank Payment
+</button>
+
+</div>
+
+<!-- CONFIRM -->
+<button class="btn" onclick="confirmPayment()">
+Confirm Payment
+</button>
+
+</div>
+
+<script>
+
+/* LOAD PACKAGE FROM URL */
+const params = new URLSearchParams(window.location.search);
+const packageName = params.get("package");
+
+if(packageName){
+    document.getElementById("packageInfo").innerText =
+    "Package: " + packageName;
+}
+
+/* PAYMENT METHOD */
+let selectedMethod = "";
+
+function pay(method){
+    selectedMethod = method;
+    alert("Selected Payment: " + method);
+}
+
+/* CONFIRM */
+function confirmPayment(){
+
+let name = document.getElementById("name").value;
+let address = document.getElementById("address").value;
+
+if(name=="" || address=="" || selectedMethod==""){
+    alert("Please complete all fields.");
+    return;
+}
+
+/* REDIRECT TO RECEIPT PAGE */
+window.location.href =
+"receipt.html?name=" + encodeURIComponent(name) +
+"&address=" + encodeURIComponent(address) +
+"&method=" + encodeURIComponent(selectedMethod) +
+"&package=" + encodeURIComponent(packageName);
+}
+</script>
+
+</body>
+</html>
