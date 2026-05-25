@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>My Account</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(
+    135deg,
+    #f5f9ff,
+    #e3f2fd,
+    #fffde7
+    );
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+
+    background:rgba(21,101,192,0.92);
+
+    backdrop-filter:blur(10px);
+
+    padding:18px 40px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:
+    0 6px 18px rgba(0,0,0,0.15);
+}
+
+.navdiv{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+}
+
+.logo a{
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:700;
+}
+
+ul{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+li{
+    list-style:none;
+}
+
+li a{
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    transition:0.3s;
+
+    font-weight:500;
+}
+
+li a:hover,
+.active{
+
+    background:white;
+
+    color:#1565c0;
+}
+
+/* ===== MAIN ===== */
+
+.main{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:50px 20px;
+
+    display:grid;
+
+    grid-template-columns:320px 1fr;
+
+    gap:30px;
+}
+
+/* ===== PROFILE CARD ===== */
+
+.profile-card{
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,0.08);
+
+    animation:fadeUp 1s ease;
+}
+
+.profile-pic{
+
+    width:130px;
+
+    height:130px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:6px solid #42a5f5;
+
+    margin-bottom:20px;
+}
+
+.profile-card h2{
+
+    color:#1565c0;
+
+    margin-bottom:5px;
+}
+
+.profile-card p{
+
+    color:#666;
+
+    margin-bottom:20px;
+}
+
+.edit-btn{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #1565c0,
+    #42a5f5
+    );
+
+    color:white;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.edit-btn:hover{
+
+    transform:translateY(-3px);
+}
+
+/* ===== ACCOUNT CONTENT ===== */
+
+.account-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+}
+
+/* ===== CARDS ===== */
+
+.card{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:30px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
+
+    animation:fadeUp 1s ease;
+}
+
+.card h3{
+
+    color:#1565c0;
+
+    margin-bottom:20px;
+
+    font-size:26px;
+}
+
+/* ===== INFO ===== */
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
+
+.info-box{
+
+    background:#f7fbff;
+
+    padding:20px;
+
+    border-radius:18px;
+}
+
+.info-box span{
+
+    display:block;
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:6px;
+}
+
+.info-box strong{
+
+    color:#333;
+
+    font-size:16px;
+}
+
+/* ===== CLASS STATUS ===== */
+
+.class-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#f7fbff;
+
+    padding:18px 20px;
+
+    border-radius:18px;
+
+    margin-bottom:15px;
+}
+
+.class-left h4{
+
+    color:#1565c0;
+
+    margin-bottom:5px;
+}
+
+.class-left p{
+
+    color:#666;
+
+    font-size:14px;
+}
+
+.status{
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.active-status{
+
+    background:#d4f8d4;
+
+    color:#1b8f3a;
+}
+
+.pending-status{
+
+    background:#fff3cd;
+
+    color:#b78103;
+}
+
+/* ===== PAYMENT ===== */
+
+.payment-box{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#f7fbff;
+
+    padding:20px;
+
+    border-radius:18px;
+}
+
+.payment-box strong{
+
+    color:#1565c0;
+
+    font-size:24px;
+}
+
+.pay-btn{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #43e97b,
+    #38f9d7
+    );
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.pay-btn:hover{
+
+    transform:translateY(-3px);
+}
+
+/* ===== ACTIVITY ===== */
+
+.activity{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:flex-start;
+
+    margin-bottom:18px;
+}
+
+.activity-icon{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#e3f2fd;
+
+    font-size:22px;
+}
+
+.activity-text h4{
+
+    color:#1565c0;
+
+    margin-bottom:4px;
+}
+
+.activity-text p{
+
+    color:#666;
+
+    font-size:14px;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeUp{
+
+from{
+    opacity:0;
+    transform:translateY(40px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+.main{
+
+    grid-template-columns:1fr;
+}
+
+.info-grid{
+
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.navdiv{
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+ul{
+
+    justify-content:center;
+}
+
+.logo a{
+
+    font-size:25px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+
+<nav class="navbar">
+
+<div class="navdiv">
+
+<div class="logo">
+
+<a href="#">
+KPP MINDS TUTORIAL
+</a>
+
+</div>
+
+<ul>
+
+<li>
+<a href="Home.html">
+🏠 Home
+</a>
+</li>
+
+<li>
+<a href="Package.html">
+💎 Packages
+</a>
+</li>
+
+<li>
+<a href="Schedule.html">
+📅 Schedule
+</a>
+</li>
+
+<li>
+<a class="active"
+href="my account.html">
+👤 My Account
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+<!-- ===== MAIN ===== -->
+
+<section class="main">
+
+<!-- PROFILE -->
+
+<div class="profile-card">
+
+<img src="profile.png"
+class="profile-pic">
+
+<h2 id="username">
+Juan Dela Cruz
+</h2>
+
+<p>
+Student Account
+</p>
+
+<a href="editprofile.html"
+class="edit-btn">
+✏ Edit Profile
+</a>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="account-content">
+
+<!-- PERSONAL INFO -->
+
+<div class="card">
+
+<h3>
+👤 Personal Information
+</h3>
+
+<div class="info-grid">
+
+<div class="info-box">
+
+<span>Full Name</span>
+
+<strong id="fullName">
+Juan Dela Cruz
+</strong>
+
+</div>
+
+<div class="info-box">
+
+<span>Email Address</span>
+
+<strong id="email">
+juan@gmail.com
+</strong>
+
+</div>
+
+<div class="info-box">
+
+<span>Mobile Number</span>
+
+<strong id="phone">
+09123456789
+</strong>
+
+</div>
+
+<div class="info-box">
+
+<span>Address</span>
+
+<strong id="address">
+Cavite, Philippines
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ENROLLED CLASSES -->
+
+<div class="card">
+
+<h3>
+📚 My Classes
+</h3>
+
+<div class="class-item">
+
+<div class="class-left">
+
+<h4>
+📘 Mathematics Tutorial
+</h4>
+
+<p>
+Every Monday & Wednesday • 5:00 PM
+</p>
+
+</div>
+
+<div class="status active-status">
+
+ACTIVE
+
+</div>
+
+</div>
+
+<div class="class-item">
+
+<div class="class-left">
+
+<h4>
+📖 English Tutorial
+</h4>
+
+<p>
+Every Saturday • 2:00 PM
+</p>
+
+</div>
+
+<div class="status pending-status">
+
+PENDING
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAYMENT -->
+
+<div class="card">
+
+<h3>
+💳 Payment Overview
+</h3>
+
+<div class="payment-box">
+
+<div>
+
+<p>
+Remaining Balance
+</p>
+
+<strong>
+₱1,499
+</strong>
+
+</div>
+
+<button class="pay-btn">
+
+Pay Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- RECENT ACTIVITY -->
+
+<div class="card">
+
+<h3>
+🕒 Recent Activity
+</h3>
+
+<div class="activity">
+
+<div class="activity-icon">
+📚
+</div>
+
+<div class="activity-text">
+
+<h4>
+Completed Math Session
+</h4>
+
+<p>
+Yesterday • 5:00 PM
+</p>
+
+</div>
+
+</div>
+
+<div class="activity">
+
+<div class="activity-icon">
+💳
+</div>
+
+<div class="activity-text">
+
+<h4>
+Payment Received
+</h4>
+
+<p>
+May 20, 2026
+</p>
+
+</div>
+
+</div>
+
+<div class="activity">
+
+<div class="activity-icon">
+📅
+</div>
+
+<div class="activity-text">
+
+<h4>
+Class Schedule Updated
+</h4>
+
+<p>
+May 18, 2026
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===== MY ACCOUNT SCRIPT ===== -->
+
+<script>
+
+/* ===== LOAD USER DATA ===== */
+
+window.onload = function(){
+
+/* FULL NAME */
+
+const fullname =
+localStorage.getItem("fullname");
+
+if(fullname){
+
+document.getElementById("username")
+.innerText = fullname;
+
+document.getElementById("fullName")
+.innerText = fullname;
+
+}
+
+/* EMAIL */
+
+const email =
+localStorage.getItem("email");
+
+if(email){
+
+document.getElementById("email")
+.innerText = email;
+
+}
+
+/* PHONE */
+
+const phone =
+localStorage.getItem("phone");
+
+if(phone){
+
+document.getElementById("phone")
+.innerText = phone;
+
+}
+
+/* ADDRESS */
+
+const address =
+localStorage.getItem("address");
+
+if(address){
+
+document.getElementById("address")
+.innerText = address;
+
+}
+
+/* PROFILE IMAGE */
+
+const profileImage =
+localStorage.getItem("profileImage");
+
+if(profileImage){
+
+document.querySelector(".profile-pic")
+.src = profileImage;
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Edit Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+    135deg,
+    #f5f9ff,
+    #e3f2fd,
+    #fffde7
+    );
+
+    overflow-x:hidden;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar{
+
+    background:rgba(21,101,192,0.92);
+
+    backdrop-filter:blur(10px);
+
+    padding:18px 40px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:
+    0 6px 18px rgba(0,0,0,0.15);
+}
+
+.navdiv{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+}
+
+.logo a{
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:700;
+}
+
+ul{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+li{
+    list-style:none;
+}
+
+li a{
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    transition:0.3s;
+
+    font-weight:500;
+}
+
+li a:hover,
+.active{
+
+    background:white;
+
+    color:#1565c0;
+}
+
+/* ===== MAIN ===== */
+
+.container{
+
+    max-width:850px;
+
+    margin:50px auto;
+
+    padding:20px;
+}
+
+/* ===== CARD ===== */
+
+.edit-card{
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,0.1);
+
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+    opacity:0;
+    transform:translateY(40px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== TITLE ===== */
+
+.title{
+
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.title h1{
+
+    color:#1565c0;
+
+    font-size:42px;
+
+    margin-bottom:10px;
+}
+
+.title p{
+
+    color:#666;
+
+    font-size:16px;
+}
+
+/* ===== PROFILE IMAGE ===== */
+
+.profile-section{
+
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.profile-section img{
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:6px solid #42a5f5;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
+}
+
+.upload-btn{
+
+    margin-top:18px;
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    background:#1565c0;
+
+    color:white;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    font-weight:600;
+}
+
+.upload-btn:hover{
+
+    transform:translateY(-3px);
+}
+
+/* ===== FORM ===== */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.form-group.full{
+    grid-column:1 / -1;
+}
+
+label{
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+    color:#333;
+}
+
+input,
+textarea,
+select{
+
+    padding:15px;
+
+    border-radius:16px;
+
+    border:1px solid #ccc;
+
+    outline:none;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:0.3s;
+
+    font-size:15px;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color:#42a5f5;
+
+    box-shadow:
+    0 0 10px rgba(66,165,245,0.3);
+}
+
+textarea{
+    resize:none;
+}
+
+/* ===== BUTTONS ===== */
+
+.button-group{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:35px;
+
+    flex-wrap:wrap;
+}
+
+.cancel-btn,
+.save-btn{
+
+    padding:15px 28px;
+
+    border:none;
+
+    border-radius:35px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    font-size:15px;
+}
+
+.cancel-btn{
+
+    background:#f1f1f1;
+
+    color:#444;
+}
+
+.save-btn{
+
+    background:
+    linear-gradient(
+    135deg,
+    #1565c0,
+    #42a5f5
+    );
+
+    color:white;
+
+    box-shadow:
+    0 10px 20px rgba(21,101,192,0.25);
+}
+
+.cancel-btn:hover,
+.save-btn:hover{
+
+    transform:translateY(-3px);
+}
+
+/* ===== SUCCESS MESSAGE ===== */
+
+.success{
+
+    display:none;
+
+    margin-top:25px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#d4f8d4;
+
+    color:#1b8f3a;
+
+    font-weight:600;
+
+    text-align:center;
+
+    animation:fadeUp 0.5s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+
+.form-grid{
+
+    grid-template-columns:1fr;
+}
+
+.navdiv{
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+.logo a{
+
+    font-size:26px;
+}
+
+ul{
+
+    justify-content:center;
+}
+
+.edit-card{
+
+    padding:25px;
+}
+
+.title h1{
+
+    font-size:32px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+
+<nav class="navbar">
+
+<div class="navdiv">
+
+<div class="logo">
+
+<a href="#">
+KPP MINDS TUTORIAL
+</a>
+
+</div>
+
+<ul>
+
+<li>
+<a href="Home.html">
+🏠 Home
+</a>
+</li>
+
+<li>
+<a href="my account.html">
+👤 My Account
+</a>
+</li>
+
+<li>
+<a class="active"
+href="editprofile.html">
+✏ Edit Profile
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+<!-- ===== MAIN ===== -->
+
+<div class="container">
+
+<div class="edit-card">
+
+<!-- TITLE -->
+
+<div class="title">
+
+<h1>
+✏ Edit Profile
+</h1>
+
+<p>
+Update your personal information and account details.
+</p>
+
+</div>
+
+<!-- PROFILE -->
+
+<div class="profile-section">
+
+<img src="profile.png"
+id="profilePreview">
+
+<br>
+
+<label class="upload-btn">
+
+📷 Upload Photo
+
+<input type="file"
+accept="image/*"
+hidden
+onchange="previewImage(event)">
+
+</label>
+
+</div>
+
+<!-- FORM -->
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>
+👤 Full Name
+</label>
+
+<input type="text"
+id="fullname"
+placeholder="Enter full name">
+
+</div>
+
+<div class="form-group">
+
+<label>
+📧 Email Address
+</label>
+
+<input type="email"
+id="email"
+placeholder="Enter email">
+
+</div>
+
+<div class="form-group">
+
+<label>
+📱 Mobile Number
+</label>
+
+<input type="tel"
+id="phone"
+placeholder="09XXXXXXXXX">
+
+</div>
+
+<div class="form-group">
+
+<label>
+🎂 Birthday
+</label>
+
+<input type="date"
+id="birthday">
+
+</div>
+
+<div class="form-group">
+
+<label>
+📚 Preferred Subject
+</label>
+
+<select id="subject">
+
+<option>
+Mathematics
+</option>
+
+<option>
+English
+</option>
+
+<option>
+Science
+</option>
+
+<option>
+Filipino
+</option>
+
+<option>
+General Academic Support
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>
+🔒 Change Password
+</label>
+
+<input type="password"
+id="password"
+placeholder="Enter new password">
+
+</div>
+
+<div class="form-group full">
+
+<label>
+🏠 Address
+</label>
+
+<textarea
+rows="4"
+id="address"
+placeholder="Enter complete address">
+</textarea>
+
+</div>
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="button-group">
+
+<button class="cancel-btn"
+onclick="resetForm()">
+
+Cancel
+
+</button>
+
+<button class="save-btn"
+onclick="saveProfile()">
+
+💾 Save Changes
+
+</button>
+
+</div>
+
+<!-- SUCCESS -->
+
+<div class="success"
+id="successMessage">
+
+✅ Profile updated successfully!
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+<!-- ===== EDIT PROFILE SCRIPT ===== -->
+
+<script>
+
+/* ===== LOAD SAVED DATA ===== */
+
+window.onload = function(){
+
+if(localStorage.getItem("fullname")){
+
+document.getElementById("fullname").value =
+localStorage.getItem("fullname");
+
+}
+
+if(localStorage.getItem("email")){
+
+document.getElementById("email").value =
+localStorage.getItem("email");
+
+}
+
+if(localStorage.getItem("phone")){
+
+document.getElementById("phone").value =
+localStorage.getItem("phone");
+
+}
+
+if(localStorage.getItem("birthday")){
+
+document.getElementById("birthday").value =
+localStorage.getItem("birthday");
+
+}
+
+if(localStorage.getItem("subject")){
+
+document.getElementById("subject").value =
+localStorage.getItem("subject");
+
+}
+
+if(localStorage.getItem("address")){
+
+document.getElementById("address").value =
+localStorage.getItem("address");
+
+}
+
+if(localStorage.getItem("profileImage")){
+
+document.getElementById("profilePreview").src =
+localStorage.getItem("profileImage");
+
+}
+
+}
+
+/* ===== IMAGE PREVIEW ===== */
+
+function previewImage(event){
+
+const reader = new FileReader();
+
+reader.onload = function(){
+
+document.getElementById("profilePreview").src =
+reader.result;
+
+localStorage.setItem(
+"profileImage",
+reader.result
+);
+
+}
+
+reader.readAsDataURL(event.target.files[0]);
+
+}
+
+/* ===== SAVE PROFILE ===== */
+
+function saveProfile(){
+
+localStorage.setItem(
+"fullname",
+document.getElementById("fullname").value
+);
+
+localStorage.setItem(
+"email",
+document.getElementById("email").value
+);
+
+localStorage.setItem(
+"phone",
+document.getElementById("phone").value
+);
+
+localStorage.setItem(
+"birthday",
+document.getElementById("birthday").value
+);
+
+localStorage.setItem(
+"subject",
+document.getElementById("subject").value
+);
+
+localStorage.setItem(
+"address",
+document.getElementById("address").value
+);
+
+const password =
+document.getElementById("password").value;
+
+if(password !== ""){
+
+localStorage.setItem(
+"password",
+password
+);
+
+}
+
+/* SUCCESS */
+
+document.getElementById("successMessage")
+.style.display = "block";
+
+/* REDIRECT */
+
+setTimeout(()=>{
+
+window.location.href =
+"MyAccount.html";
+
+},1500);
+
+}
+
+/* ===== RESET ===== */
+
+function resetForm(){
+
+document.querySelectorAll("input, textarea")
+.forEach(field=>{
+
+if(field.type !== "file"){
+
+field.value = "";
+
+}
+
+});
+
+document.getElementById("subject")
+.selectedIndex = 0;
+
+}
+
+</script>
+</body>
+
+</html>
