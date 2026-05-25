@@ -43,6 +43,8 @@ body{
     overflow-x:hidden;
 
     position:relative;
+
+    padding:20px;
 }
 
 /* ===== AURORA EFFECT ===== */
@@ -107,9 +109,9 @@ body::after{
 .container{
 
     width:95%;
-    max-width:520px;
+    max-width:550px;
 
-    background:rgba(255,255,255,0.9);
+    background:rgba(255,255,255,0.92);
 
     backdrop-filter:blur(15px);
 
@@ -172,9 +174,9 @@ h2{
 
     color:white;
 
-    padding:18px;
+    padding:20px;
 
-    border-radius:18px;
+    border-radius:20px;
 
     margin-bottom:22px;
 }
@@ -183,7 +185,7 @@ h2{
 
     margin-bottom:8px;
 
-    font-size:20px;
+    font-size:22px;
 }
 
 .summary p{
@@ -294,6 +296,88 @@ textarea{
     color:#1565c0;
 
     margin-top:8px;
+}
+
+/* ===== GCASH QR ===== */
+
+.gcash-box{
+
+    display:none;
+
+    margin-top:20px;
+
+    background:#f8fbff;
+
+    border:2px dashed #42a5f5;
+
+    border-radius:22px;
+
+    padding:22px;
+
+    text-align:center;
+
+    animation:fadeIn 0.5s ease;
+}
+
+.gcash-box h3{
+
+    color:#1565c0;
+
+    margin-bottom:10px;
+}
+
+.gcash-text{
+
+    color:#666;
+
+    font-size:14px;
+
+    margin-bottom:18px;
+}
+
+.qr-image{
+
+    width:220px;
+
+    max-width:100%;
+
+    border-radius:20px;
+
+    background:white;
+
+    padding:10px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.gcash-details{
+
+    margin-top:15px;
+
+    background:white;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    font-size:14px;
+
+    color:#444;
+}
+
+.gcash-details p{
+    margin:6px 0;
+}
+
+#proof{
+
+    margin-top:12px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    padding:12px;
 }
 
 /* ===== PRICE BOX ===== */
@@ -538,6 +622,39 @@ Secure Bank Payment
 
 </div>
 
+<!-- GCASH QR SECTION -->
+
+<div id="gcashBox" class="gcash-box">
+
+<h3>📲 Scan to Pay via GCash</h3>
+
+<p class="gcash-text">
+Use your GCash app to scan the QR code below.
+</p>
+
+<!-- CHANGE THIS IMAGE -->
+<img src="gcash-qr.png"
+alt="GCash QR Code"
+class="qr-image">
+
+<div class="gcash-details">
+
+<p><b>GCash Name:</b> KPP Tutorial Minds</p>
+
+<p><b>GCash Number:</b> 09XX-XXX-XXXX</p>
+
+</div>
+
+<label style="margin-top:15px;">
+📤 Upload Payment Screenshot
+</label>
+
+<input type="file"
+id="proof"
+accept="image/*">
+
+</div>
+
 <!-- PRICE SUMMARY -->
 
 <div class="price-box">
@@ -642,6 +759,21 @@ card.classList.remove("active");
 
 element.classList.add("active");
 
+/* GCASH QR SHOW/HIDE */
+
+const gcashBox =
+document.getElementById("gcashBox");
+
+if(method==="GCash"){
+
+gcashBox.style.display="block";
+
+}else{
+
+gcashBox.style.display="none";
+
+}
+
 }
 
 /* ===== CONFIRM ===== */
@@ -677,6 +809,23 @@ selectedMethod===""
 alert("Please complete all required fields.");
 
 return;
+
+}
+
+/* GCASH SCREENSHOT VALIDATION */
+
+if(selectedMethod==="GCash"){
+
+let proof =
+document.getElementById("proof").value;
+
+if(proof===""){
+
+alert("Please upload your GCash payment screenshot.");
+
+return;
+
+}
 
 }
 
