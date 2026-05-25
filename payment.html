@@ -2,142 +2,406 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment Page</title>
+
+<title>KPP Tutorial Minds - Payment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ===== GLOBAL ===== */
 
-body{
-    font-family:Arial;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    /* ✨ LUXURY AURORA BACKGROUND */
-    background: linear-gradient(
-        135deg,
-        #0f2027,
-        #203a43,
-        #2c5364
-    );
-
-    position:relative;
-    overflow:hidden;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* ===== AURORA BACKGROUND EFFECT ===== */
+body{
 
-.aurora::before,
-.aurora::after{
-    content:"";
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(
+    135deg,
+    #0f2027,
+    #203a43,
+    #2c5364
+    );
+
+    overflow-x:hidden;
+
+    position:relative;
+}
+
+/* ===== AURORA EFFECT ===== */
+
+body::before,
+body::after{
+
+    content:'';
+
     position:fixed;
-    width:500px;
-    height:500px;
+
+    width:450px;
+    height:450px;
+
     border-radius:50%;
-    filter:blur(140px);
-    opacity:0.6;
+
+    filter:blur(120px);
+
     z-index:-1;
+
+    opacity:0.5;
+
     animation:float 10s infinite ease-in-out;
 }
 
-/* BLUE LIGHT */
-.aurora::before{
+body::before{
+
     background:#42a5f5;
+
     top:-100px;
     left:-120px;
 }
 
-/* PURPLE LIGHT */
-.aurora::after{
+body::after{
+
     background:#7e57c2;
-    bottom:-120px;
-    right:-100px;
+
+    bottom:-100px;
+    right:-120px;
+
     animation-delay:2s;
 }
 
 @keyframes float{
-    0%{transform:translateY(0px) scale(1);}
-    50%{transform:translateY(-40px) scale(1.15);}
-    100%{transform:translateY(0px) scale(1);}
+
+0%{
+    transform:translateY(0px) scale(1);
 }
 
-/* CARD */
+50%{
+    transform:translateY(-30px) scale(1.1);
+}
+
+100%{
+    transform:translateY(0px) scale(1);
+}
+
+}
+
+/* ===== CONTAINER ===== */
+
 .container{
-    background:rgba(255,255,255,0.85);
+
+    width:95%;
+    max-width:520px;
+
+    background:rgba(255,255,255,0.9);
+
     backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.3);
 
-    padding:30px;
-    width:90%;
-    max-width:450px;
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    animation:fadeIn 0.6s ease;
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+
+    animation:fadeIn 0.7s ease;
 }
 
-/* ANIMATION */
 @keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+
+from{
+    opacity:0;
+    transform:translateY(30px);
 }
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* ===== TITLE ===== */
 
 h2{
+
     text-align:center;
+
     color:#1565c0;
-    margin-bottom:20px;
+
+    margin-bottom:8px;
+
+    font-size:34px;
 }
 
-/* INPUTS */
-input, textarea{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:12px;
-    border:1px solid #ccc;
-    outline:none;
+.subtitle{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:25px;
+
+    font-size:14px;
 }
 
-input:focus, textarea:focus{
-    border:2px solid #42a5f5;
-}
+/* ===== SUMMARY ===== */
 
-/* BUTTONS */
-.btn{
-    width:100%;
-    padding:14px;
-    margin-top:10px;
-    border:none;
-    border-radius:30px;
-    font-weight:bold;
-    cursor:pointer;
+.summary{
+
+    background:linear-gradient(
+    to right,
+    #1565c0,
+    #42a5f5
+    );
+
     color:white;
-    background:linear-gradient(to right,#1565c0,#42a5f5);
+
+    padding:18px;
+
+    border-radius:18px;
+
+    margin-bottom:22px;
+}
+
+.summary h3{
+
+    margin-bottom:8px;
+
+    font-size:20px;
+}
+
+.summary p{
+
+    margin:5px 0;
+
+    font-size:14px;
+}
+
+/* ===== FORM ===== */
+
+.form-group{
+
+    margin-bottom:18px;
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#333;
+
+    font-weight:600;
+
+    font-size:14px;
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    border:1px solid #ccc;
+
+    outline:none;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border:1px solid #42a5f5;
+
+    box-shadow:0 0 10px rgba(66,165,245,0.3);
+}
+
+textarea{
+    resize:none;
+}
+
+/* ===== PAYMENT METHODS ===== */
+
+.payment-methods{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-top:10px;
+}
+
+.method{
+
+    background:#f5f7ff;
+
+    border:2px solid transparent;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.method:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#42a5f5;
+}
+
+.method.active{
+
+    border-color:#1565c0;
+
+    background:#eaf4ff;
+}
+
+.method h4{
+
+    color:#1565c0;
+
+    margin-top:8px;
+}
+
+/* ===== PRICE BOX ===== */
+
+.price-box{
+
+    background:#f8f9ff;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-top:22px;
+}
+
+.price-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:10px 0;
+
+    color:#444;
+}
+
+.total{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#1565c0;
+
+    border-top:1px solid #ddd;
+
+    padding-top:12px;
+
+    margin-top:12px;
+}
+
+/* ===== BUTTON ===== */
+
+.btn{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-top:25px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:linear-gradient(
+    to right,
+    #1565c0,
+    #42a5f5
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
     transition:0.3s;
 }
 
 .btn:hover{
-    transform:scale(1.03);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-.option{
-    display:flex;
-    gap:10px;
+/* ===== SECURITY ===== */
+
+.security{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:13px;
 }
 
-.option button{
-    flex:1;
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:600px){
+
+.payment-methods{
+    grid-template-columns:1fr;
 }
 
-.summary{
-    background:#f5f5f5;
-    padding:10px;
-    border-radius:12px;
-    margin-bottom:10px;
-    font-size:14px;
+.container{
+    padding:25px;
+}
+
+h2{
+    font-size:28px;
+}
+
 }
 
 </style>
@@ -146,81 +410,328 @@ input:focus, textarea:focus{
 
 <body>
 
-<!-- ✨ BACKGROUND EFFECT -->
-<div class="aurora"></div>
-
 <div class="container">
 
-<h2>Payment Form</h2>
+<h2>💳 Secure Payment</h2>
+
+<p class="subtitle">
+Complete your enrollment securely and reserve your tutoring schedule.
+</p>
 
 <!-- PACKAGE SUMMARY -->
-<div class="summary" id="packageInfo">
-Package: Not Selected
-</div>
 
-<!-- NAME -->
-<input type="text" placeholder="Full Name" id="name">
+<div class="summary">
 
-<!-- ADDRESS -->
-<textarea placeholder="Complete Address" id="address"></textarea>
+<h3 id="packageTitle">
+Selected Package
+</h3>
 
-<!-- PAYMENT OPTIONS -->
-<div class="option">
+<p id="packageClasses">
+Classes Included
+</p>
 
-<button class="btn" onclick="pay('GCash')">
-📲 GCash
-</button>
-
-<button class="btn" onclick="pay('Bank')">
-🏦 Bank Payment
-</button>
+<p id="packagePrice">
+Price
+</p>
 
 </div>
 
-<!-- CONFIRM -->
-<button class="btn" onclick="confirmPayment()">
-Confirm Payment
+<!-- FORM -->
+
+<div class="form-group">
+
+<label>👤 Full Name</label>
+
+<input type="text"
+id="name"
+placeholder="Enter your full name">
+
+</div>
+
+<div class="form-group">
+
+<label>📧 Email Address</label>
+
+<input type="email"
+id="email"
+placeholder="Enter your email">
+
+</div>
+
+<div class="form-group">
+
+<label>📱 Mobile Number</label>
+
+<input type="tel"
+id="phone"
+placeholder="09XXXXXXXXX">
+
+</div>
+
+<div class="form-group">
+
+<label>🏠 Complete Address</label>
+
+<textarea
+id="address"
+rows="3"
+placeholder="Enter your complete address">
+</textarea>
+
+</div>
+
+<div class="form-group">
+
+<label>📚 Preferred Subject</label>
+
+<select id="subject">
+
+<option value="">
+Select Subject
+</option>
+
+<option>Mathematics</option>
+<option>English</option>
+<option>Science</option>
+<option>Filipino</option>
+<option>General Academic Support</option>
+
+</select>
+
+</div>
+
+<!-- PAYMENT METHODS -->
+
+<div class="form-group">
+
+<label>💰 Choose Payment Method</label>
+
+<div class="payment-methods">
+
+<div class="method"
+onclick="selectMethod('GCash', this)">
+
+<div style="font-size:32px;">📲</div>
+
+<h4>GCash</h4>
+
+<p style="font-size:13px;color:#666;">
+Instant Mobile Payment
+</p>
+
+</div>
+
+<div class="method"
+onclick="selectMethod('Bank Transfer', this)">
+
+<div style="font-size:32px;">🏦</div>
+
+<h4>Bank Transfer</h4>
+
+<p style="font-size:13px;color:#666;">
+Secure Bank Payment
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PRICE SUMMARY -->
+
+<div class="price-box">
+
+<div class="price-row">
+<span>Package Fee</span>
+<span id="fee">₱0</span>
+</div>
+
+<div class="price-row">
+<span>Enrollment Fee</span>
+<span>₱99</span>
+</div>
+
+<div class="price-row total">
+<span>Total</span>
+<span id="total">₱0</span>
+</div>
+
+</div>
+
+<!-- BUTTON -->
+
+<button class="btn"
+onclick="confirmPayment()">
+
+🔒 Confirm & Continue
+
 </button>
+
+<div class="security">
+
+🔐 Your payment information is securely protected.
+
+</div>
 
 </div>
 
 <script>
 
-/* LOAD PACKAGE FROM URL */
+/* ===== PACKAGE DATA ===== */
+
+const packagePrices = {
+
+"Starter Pack - 4 Classes":499,
+
+"Smart Pack - 8 Classes":999,
+
+"Premium Pack - 12 Classes":1499
+
+};
+
+/* ===== LOAD PACKAGE ===== */
+
 const params = new URLSearchParams(window.location.search);
+
 const packageName = params.get("package");
 
-if(packageName){
-    document.getElementById("packageInfo").innerText =
-    "Package: " + packageName;
-}
-
-/* PAYMENT METHOD */
 let selectedMethod = "";
 
-function pay(method){
-    selectedMethod = method;
-    alert("Selected Payment: " + method);
+/* ===== DISPLAY PACKAGE ===== */
+
+if(packageName){
+
+let price = packagePrices[packageName] || 0;
+
+let total = price + 99;
+
+document.getElementById("packageTitle").innerText =
+packageName;
+
+document.getElementById("packageClasses").innerText =
+"Includes personalized tutoring sessions";
+
+document.getElementById("packagePrice").innerText =
+"Package Price: ₱" + price;
+
+document.getElementById("fee").innerText =
+"₱" + price;
+
+document.getElementById("total").innerText =
+"₱" + total;
+
 }
 
-/* CONFIRM */
+/* ===== SELECT PAYMENT ===== */
+
+function selectMethod(method, element){
+
+selectedMethod = method;
+
+/* REMOVE ACTIVE */
+
+document.querySelectorAll(".method")
+.forEach(card=>{
+
+card.classList.remove("active");
+
+});
+
+/* ADD ACTIVE */
+
+element.classList.add("active");
+
+}
+
+/* ===== CONFIRM ===== */
+
 function confirmPayment(){
 
-let name = document.getElementById("name").value;
-let address = document.getElementById("address").value;
+let name =
+document.getElementById("name").value;
 
-if(name=="" || address=="" || selectedMethod==""){
-    alert("Please complete all fields.");
-    return;
+let email =
+document.getElementById("email").value;
+
+let phone =
+document.getElementById("phone").value;
+
+let address =
+document.getElementById("address").value;
+
+let subject =
+document.getElementById("subject").value;
+
+/* VALIDATION */
+
+if(
+name==="" ||
+email==="" ||
+phone==="" ||
+address==="" ||
+subject==="" ||
+selectedMethod===""
+){
+
+alert("Please complete all required fields.");
+
+return;
+
 }
 
-/* REDIRECT TO RECEIPT PAGE */
+/* SUCCESS */
+
+alert(
+"Payment Information Submitted Successfully!"
+);
+
+/* REDIRECT */
+
 window.location.href =
-"receipt.html?name=" + encodeURIComponent(name) +
-"&address=" + encodeURIComponent(address) +
-"&method=" + encodeURIComponent(selectedMethod) +
-"&package=" + encodeURIComponent(packageName);
+
+"receipt.html?name=" +
+
+encodeURIComponent(name)
+
++
+
+"&email=" +
+
+encodeURIComponent(email)
+
++
+
+"&phone=" +
+
+encodeURIComponent(phone)
+
++
+
+"&address=" +
+
+encodeURIComponent(address)
+
++
+
+"&subject=" +
+
+encodeURIComponent(subject)
+
++
+
+"&method=" +
+
+encodeURIComponent(selectedMethod)
+
++
+
+"&package=" +
+
+encodeURIComponent(packageName);
+
 }
+
 </script>
 
 </body>
