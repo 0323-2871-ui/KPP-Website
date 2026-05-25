@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Package</title>
+<title>KPP Tutorial Minds - Packages</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -20,15 +22,16 @@
 }
 
 body{
+
+    font-family:'Poppins',sans-serif;
+
     background-image:
-    linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
     url(background2.png);
 
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
-
-    font-family:Arial;
 
     animation:pageTransition 1s ease;
 }
@@ -52,48 +55,32 @@ to{
 /* ===== NAVBAR ===== */
 
 .navbar{
-    background:linear-gradient(90deg,#42a5f5,#1e88e5);
+
+    background:linear-gradient(90deg,#42a5f5,#1565c0);
+
     padding:15px 35px;
+
     box-shadow:0 4px 12px rgba(0,0,0,0.2);
+
     position:sticky;
+
     top:0;
+
     z-index:1000;
-
-    animation:navSlide 1s ease;
-}
-
-@keyframes navSlide{
-
-from{
-    opacity:0;
-    transform:translateY(-50px);
-}
-
-to{
-    opacity:1;
-    transform:translateY(0);
-}
-
 }
 
 .navdiv{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     flex-wrap:wrap;
 }
 
-/* LOGO */
-
 .logo a{
-    font-size:38px;
-    font-weight:bold;
     color:white;
-    letter-spacing:1px;
-    text-shadow:2px 2px 6px rgba(0,0,0,0.3);
+    font-size:35px;
+    font-weight:700;
 }
-
-/* NAVIGATION */
 
 ul{
     display:flex;
@@ -106,84 +93,141 @@ li{
     list-style:none;
 }
 
-/* NAV BUTTONS */
-
 li a{
+
     color:white;
-    font-size:18px;
-    font-weight:bold;
+
     padding:12px 18px;
+
     border-radius:12px;
-    transition:all 0.3s ease;
-    display:inline-block;
+
+    font-weight:600;
+
+    transition:0.3s;
 }
 
-li a:hover{
-    background:white;
-    color:#1565c0;
-    transform:translateY(-3px);
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
-
+li a:hover,
 .active{
+
     background:white;
+
     color:#1565c0;
+
+    transform:translateY(-3px);
 }
 
-/* ===== PACKAGE SECTION ===== */
+/* ===== SECTION ===== */
 
 .package-section{
-    max-width:1100px;
+
+    max-width:1200px;
+
     margin:auto;
-    padding:50px 30px;
+
+    padding:60px 25px;
+
     text-align:center;
 }
 
 .package-section h2{
-    font-size:55px;
+
     color:white;
-    text-shadow:3px 3px 10px rgba(0,0,0,0.4);
+
+    font-size:58px;
+
+    text-shadow:3px 3px 10px rgba(0,0,0,0.3);
 }
 
 .package-section p{
+
     color:white;
+
     font-size:18px;
+
     margin-top:10px;
+
+    line-height:1.7;
+}
+
+/* ===== TRUST BADGES ===== */
+
+.trust-badges{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+}
+
+.badge{
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    padding:12px 18px;
+
+    border-radius:30px;
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    font-size:14px;
 }
 
 /* ===== PACKAGE GRID ===== */
 
 .package-container{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:40px;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+
+    margin-top:50px;
 }
 
-/* ===== PACKAGE CARDS ===== */
+/* ===== PACKAGE CARD ===== */
 
 .package-card{
 
-    background:rgba(255,255,255,0.96);
+    background:white;
 
-    padding:30px;
+    border-radius:28px;
 
-    border-radius:25px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-
-    animation:cardFade 1.2s ease;
-
-    transition:0.4s;
+    padding:35px 30px;
 
     position:relative;
 
     overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+
+    transition:0.4s;
+
+    animation:cardFade 1s ease;
+}
+
+.package-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 25px 40px rgba(0,0,0,0.25);
 }
 
 .package-card::before{
+
     content:'';
+
     position:absolute;
+
     top:0;
     left:0;
 
@@ -193,16 +237,18 @@ li a:hover{
     background:linear-gradient(90deg,#42a5f5,#7e57c2);
 }
 
-.package-card:hover{
-    transform:translateY(-10px) scale(1.03);
-    box-shadow:0 20px 35px rgba(0,0,0,0.2);
+.featured-card{
+
+    transform:scale(1.04);
+
+    border:3px solid #42a5f5;
 }
 
 @keyframes cardFade{
 
 from{
     opacity:0;
-    transform:translateY(60px);
+    transform:translateY(50px);
 }
 
 to{
@@ -212,143 +258,291 @@ to{
 
 }
 
+/* ===== TAGS ===== */
+
+.popular-tag{
+
+    position:absolute;
+
+    top:18px;
+    right:-45px;
+
+    background:#42a5f5;
+
+    color:white;
+
+    padding:8px 45px;
+
+    transform:rotate(45deg);
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+.premium{
+    background:#ff9800;
+}
+
+.gold{
+    background:#7e57c2;
+}
+
+/* ===== TEXT ===== */
+
 .package-card h3{
-    font-size:30px;
-    color:#1565c0;
-}
 
-.package-card p{
-    font-size:15px;
-    margin:10px 0;
-    color:#555;
-    line-height:1.7;
-}
-
-.classes{
-    font-weight:bold;
     color:#1565c0;
-    font-size:16px;
+
+    font-size:32px;
 }
 
 .price{
-    font-size:42px;
+
+    font-size:48px;
+
     color:#ff9800;
-    font-weight:bold;
-    margin:15px 0;
+
+    font-weight:700;
+
+    margin:18px 0;
 }
 
-/* ===== BUTTONS ===== */
+.price span{
+
+    font-size:16px;
+
+    color:#666;
+
+    font-weight:400;
+}
+
+.classes{
+
+    color:#1565c0;
+
+    font-weight:600;
+
+    font-size:17px;
+}
+
+/* ===== FEATURES ===== */
+
+.features{
+
+    margin-top:25px;
+
+    text-align:left;
+}
+
+.features li{
+
+    list-style:none;
+
+    margin:14px 0;
+
+    color:#444;
+
+    font-size:15px;
+}
+
+/* ===== EXTRA INFO ===== */
+
+.extra-info{
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    background:#f5f9ff;
+
+    color:#555;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+/* ===== BUTTON ===== */
 
 .btn{
 
-    margin-top:12px;
-    padding:14px;
-
     width:100%;
 
+    margin-top:25px;
+
+    padding:15px;
+
     border:none;
-    border-radius:30px;
+
+    border-radius:35px;
 
     background:linear-gradient(to right,#1565c0,#42a5f5);
 
     color:white;
 
-    cursor:pointer;
+    font-size:16px;
 
-    font-weight:bold;
+    font-weight:600;
+
+    cursor:pointer;
 
     transition:0.3s;
 }
 
 .btn:hover{
-    transform:translateY(-3px) scale(1.03);
+
+    transform:translateY(-3px);
+
     box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== GUARANTEE ===== */
+
+.guarantee-box{
+
+    margin-top:55px;
+
+    background:rgba(255,255,255,0.96);
+
+    padding:40px;
+
+    border-radius:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.guarantee-box h3{
+
+    color:#1565c0;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+}
+
+.guarantee-box p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    font-size:16px;
 }
 
 /* ===== MODAL ===== */
 
 .modal{
 
-display:none;
+    display:none;
 
-position:fixed;
+    position:fixed;
 
-z-index:2000;
+    z-index:2000;
 
-left:0;
-top:0;
+    left:0;
+    top:0;
 
-width:100%;
-height:100%;
+    width:100%;
+    height:100%;
 
-background:rgba(0,0,0,0.6);
-
-animation:fadeModal 0.4s ease;
-}
-
-@keyframes fadeModal{
-
-from{opacity:0;}
-to{opacity:1;}
-
+    background:rgba(0,0,0,0.6);
 }
 
 .modal-box{
 
-background:white;
+    background:white;
 
-width:90%;
-max-width:400px;
+    width:90%;
+    max-width:400px;
 
-padding:30px;
+    padding:30px;
 
-border-radius:25px;
+    border-radius:25px;
 
-position:absolute;
+    position:absolute;
 
-top:50%;
-left:50%;
+    top:50%;
+    left:50%;
 
-transform:translate(-50%,-50%);
-
-box-shadow:0 15px 30px rgba(0,0,0,0.3);
+    transform:translate(-50%,-50%);
 }
 
 .modal-box h2{
-text-align:center;
-margin-bottom:20px;
-color:#1565c0;
+
+    color:#1565c0;
+
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.modal-box input{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-top:12px;
+
+    border-radius:12px;
+
+    border:1px solid #ccc;
+
+    font-family:'Poppins',sans-serif;
 }
 
 .modal-btn{
 
-width:100%;
+    width:100%;
 
-padding:14px;
+    padding:14px;
 
-border:none;
+    border:none;
 
-border-radius:30px;
+    border-radius:30px;
 
-background:linear-gradient(to right,#1565c0,#42a5f5);
+    background:linear-gradient(to right,#1565c0,#42a5f5);
 
-color:white;
+    color:white;
 
-font-size:16px;
+    margin-top:18px;
 
-font-weight:bold;
+    cursor:pointer;
 
-cursor:pointer;
-
-margin-top:15px;
+    font-weight:600;
 }
 
 .close{
-position:absolute;
-top:15px;
-right:20px;
-font-size:28px;
-cursor:pointer;
+
+    position:absolute;
+
+    top:15px;
+    right:20px;
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+
+.package-section h2{
+    font-size:40px;
+}
+
+.logo a{
+    font-size:26px;
+}
+
+.featured-card{
+    transform:none;
+}
+
 }
 
 </style>
@@ -359,7 +553,7 @@ cursor:pointer;
 
 <!-- SOUND -->
 <audio id="clickSound">
-    <source src="click.mp3" type="audio/mpeg">
+<source src="click.mp3" type="audio/mpeg">
 </audio>
 
 <!-- NAVBAR -->
@@ -375,18 +569,22 @@ cursor:pointer;
 
 <li><a href="Home.html">🏠 Home</a></li>
 <li><a href="About Us.html">📘 About Us</a></li>
-<li><a class="active" href="Package.html">💎 Package</a></li>
+<li><a class="active" href="#">💎 Package</a></li>
 <li><a href="Schedule.html">📅 Schedule</a></li>
 <li><a href="Contact.html">📞 Contact</a></li>
 
-<li id="signInNav"><a href="#" onclick="openSignIn()">🔑 Sign In</a></li>
+<li id="signInNav">
+<a href="#" onclick="openSignIn()">🔑 Sign In</a>
+</li>
 
-<li class="button" id="signUpNav">
+<li id="signUpNav">
 <a href="#" onclick="openSignUp()">📝 Sign Up</a>
 </li>
 
 <li id="profileNav" style="display:none;">
-<a href="#" onclick="toggleProfileMenu()">👤 <span id="profileName"></span></a>
+<a href="#" onclick="toggleProfileMenu()">
+👤 <span id="profileName"></span>
+</a>
 </li>
 
 </ul>
@@ -397,90 +595,267 @@ cursor:pointer;
 
 <!-- SIGN IN -->
 <div id="signInModal" class="modal">
+
 <div class="modal-box">
-<span class="close" onclick="closeModal('signInModal')">&times;</span>
+
+<span class="close"
+onclick="closeModal('signInModal')">&times;</span>
 
 <h2>🔑 Sign In</h2>
 
-<input type="text" id="signinUser" placeholder="Enter Username">
-<input type="password" id="signinPass" placeholder="Enter Password">
+<input type="text"
+id="signinUser"
+placeholder="Enter Username">
 
-<button class="modal-btn" onclick="signIn()">Sign In</button>
+<input type="password"
+id="signinPass"
+placeholder="Enter Password">
+
+<button class="modal-btn"
+onclick="signIn()">
+Sign In
+</button>
 
 </div>
+
 </div>
 
 <!-- SIGN UP -->
 <div id="signUpModal" class="modal">
+
 <div class="modal-box">
-<span class="close" onclick="closeModal('signUpModal')">&times;</span>
+
+<span class="close"
+onclick="closeModal('signUpModal')">&times;</span>
 
 <h2>📝 Sign Up</h2>
 
-<input type="text" id="signupUser" placeholder="Create Username">
-<input type="password" id="signupPass" placeholder="Create Password">
+<input type="text"
+id="signupUser"
+placeholder="Create Username">
 
-<button class="modal-btn" onclick="signUp()">Create Account</button>
+<input type="password"
+id="signupPass"
+placeholder="Create Password">
+
+<button class="modal-btn"
+onclick="signUp()">
+Create Account
+</button>
 
 </div>
+
 </div>
 
 <!-- PROFILE -->
 <div id="profileMenu" class="modal">
+
 <div class="modal-box">
-<span class="close" onclick="closeModal('profileMenu')">&times;</span>
+
+<span class="close"
+onclick="closeModal('profileMenu')">&times;</span>
 
 <h2>👤 User Profile</h2>
 
-<p style="margin-top:15px; font-size:18px;">
-Welcome, <b id="welcomeUser"></b>
+<p style="margin-top:15px;font-size:18px;">
+Welcome,
+<b id="welcomeUser"></b>
 </p>
 
-<button class="modal-btn" onclick="logout()">🚪 Logout</button>
+<button class="modal-btn"
+onclick="logout()">
+🚪 Logout
+</button>
 
 </div>
+
 </div>
 
 <!-- PACKAGES -->
 <section class="package-section">
 
-<h2>Our Packages</h2>
-<p>Choose a package</p>
+<h2>Choose Your Learning Plan ✨</h2>
+
+<p>
+Affordable and realistic tutoring packages designed to help students
+improve confidently and achieve better academic performance.
+</p>
+
+<!-- TRUST BADGES -->
+
+<div class="trust-badges">
+
+<div class="badge">⭐ 500+ Happy Students</div>
+
+<div class="badge">📚 Personalized Lessons</div>
+
+<div class="badge">💬 Parent Updates</div>
+
+<div class="badge">🕒 Flexible Schedule</div>
+
+</div>
+
+<!-- PACKAGE GRID -->
 
 <div class="package-container">
 
+<!-- STARTER -->
+
 <div class="package-card">
+
+<div class="popular-tag">
+BEGINNER
+</div>
+
 <h3>Starter Pack</h3>
-<div class="price">₱499</div>
-<p class="classes">📘 Includes 4 Classes</p>
-<p>Perfect for beginners!</p>
 
-<button class="btn" onclick="showPayment('Starter Pack - 4 Classes')">
-Choose Package
-</button>
+<div class="price">
+₱499
+<span>/ month</span>
 </div>
 
-<div class="package-card">
+<p class="classes">
+📘 4 Classes
+</p>
+
+<ul class="features">
+
+<li>✅ 1-on-1 Tutoring</li>
+
+<li>✅ Homework Help</li>
+
+<li>✅ Flexible Schedule</li>
+
+<li>✅ Review Materials</li>
+
+<li>✅ Basic Progress Monitoring</li>
+
+</ul>
+
+<div class="extra-info">
+Perfect for students who need extra support in school subjects.
+</div>
+
+<button class="btn"
+onclick="showPayment('Starter Pack - 4 Classes')">
+
+Choose Starter
+
+</button>
+
+</div>
+
+<!-- SMART -->
+
+<div class="package-card featured-card">
+
+<div class="popular-tag premium">
+MOST POPULAR
+</div>
+
 <h3>Smart Pack</h3>
-<div class="price">₱999</div>
-<p class="classes">📗 Includes 8 Classes</p>
-<p>Interactive lessons and practice.</p>
 
-<button class="btn" onclick="showPayment('Smart Pack - 8 Classes')">
-Choose Package
-</button>
+<div class="price">
+₱999
+<span>/ month</span>
 </div>
+
+<p class="classes">
+📗 8 Classes
+</p>
+
+<ul class="features">
+
+<li>✅ Weekly Assessments</li>
+
+<li>✅ Quiz Preparation</li>
+
+<li>✅ Homework & Projects</li>
+
+<li>✅ Parent Progress Reports</li>
+
+<li>✅ Free Review Session</li>
+
+<li>✅ Personalized Lessons</li>
+
+</ul>
+
+<div class="extra-info">
+Recommended for students aiming for consistent academic improvement.
+</div>
+
+<button class="btn"
+onclick="showPayment('Smart Pack - 8 Classes')">
+
+Choose Smart
+
+</button>
+
+</div>
+
+<!-- PREMIUM -->
 
 <div class="package-card">
-<h3>Premium Pack</h3>
-<div class="price">₱1499</div>
-<p class="classes">📙 Includes 12 Classes</p>
-<p>Full academic support.</p>
 
-<button class="btn" onclick="showPayment('Premium Pack - 12 Classes')">
-Choose Package
-</button>
+<div class="popular-tag gold">
+ADVANCED
 </div>
+
+<h3>Premium Pack</h3>
+
+<div class="price">
+₱1499
+<span>/ month</span>
+</div>
+
+<p class="classes">
+📙 12 Classes
+</p>
+
+<ul class="features">
+
+<li>✅ Intensive Tutoring</li>
+
+<li>✅ Personalized Study Plan</li>
+
+<li>✅ Daily Academic Support</li>
+
+<li>✅ Priority Scheduling</li>
+
+<li>✅ Exam Coaching</li>
+
+<li>✅ Parent Consultation</li>
+
+<li>✅ Free Learning Materials</li>
+
+</ul>
+
+<div class="extra-info">
+Best for students who need full academic support and faster progress.
+</div>
+
+<button class="btn"
+onclick="showPayment('Premium Pack - 12 Classes')">
+
+Choose Premium
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GUARANTEE -->
+
+<div class="guarantee-box">
+
+<h3>💙 Why Parents Choose KPP Tutorial Minds</h3>
+
+<p>
+We provide patient tutors, engaging lessons, personalized learning
+approaches, and regular updates to help students become more confident,
+motivated, and academically successful.
+</p>
 
 </div>
 
@@ -490,81 +865,161 @@ Choose Package
 
 let chosenPackage = "";
 
-/* MODALS */
-function openSignIn(){ document.getElementById("signInModal").style.display="block"; }
-function openSignUp(){ document.getElementById("signUpModal").style.display="block"; }
-function closeModal(id){ document.getElementById(id).style.display="none"; }
+/* ===== MODALS ===== */
 
-/* SIGN UP */
-function signUp(){
-let u=document.getElementById("signupUser").value;
-let p=document.getElementById("signupPass").value;
+function openSignIn(){
 
-if(u==""||p==""){alert("Fill all");return;}
+document.getElementById("signInModal").style.display="block";
 
-localStorage.setItem("username",u);
-localStorage.setItem("password",p);
-
-alert("Created!");
-closeModal("signUpModal");
 }
 
-/* SIGN IN */
+function openSignUp(){
+
+document.getElementById("signUpModal").style.display="block";
+
+}
+
+function closeModal(id){
+
+document.getElementById(id).style.display="none";
+
+}
+
+/* ===== SIGN UP ===== */
+
+function signUp(){
+
+let u=document.getElementById("signupUser").value;
+
+let p=document.getElementById("signupPass").value;
+
+if(u==="" || p===""){
+
+alert("Please fill in all fields.");
+
+return;
+
+}
+
+localStorage.setItem("username",u);
+
+localStorage.setItem("password",p);
+
+alert("Account created successfully!");
+
+closeModal("signUpModal");
+
+}
+
+/* ===== SIGN IN ===== */
+
 function signIn(){
 
 let u=document.getElementById("signinUser").value;
+
 let p=document.getElementById("signinPass").value;
 
-if(u===localStorage.getItem("username") &&
-p===localStorage.getItem("password")){
+if(
+
+u===localStorage.getItem("username")
+
+&&
+
+p===localStorage.getItem("password")
+
+){
 
 localStorage.setItem("isLoggedIn",true);
-alert("Success");
+
+alert("Login successful!");
+
 closeModal("signInModal");
 
-}else{
-alert("Wrong");
-}
-}
-
-/* PACKAGE SELECT (NO PAYMENT) */
-function showPayment(pkg){
-    let sound=document.getElementById("clickSound");
-    sound.currentTime=0;
-    sound.play();
-
-    if(localStorage.getItem("isLoggedIn")!=="true"){
-        alert("Sign in first");
-        openSignIn();
-        return;
-    }
-
-    // REDIRECT TO PAYMENT PAGE
-    window.location.href = "payment.html?package=" + encodeURIComponent(pkg);
-}
-
-/* PROFILE */
-function toggleProfileMenu(){
-document.getElementById("profileMenu").style.display="block";
-document.getElementById("welcomeUser").innerText=localStorage.getItem("username");
-}
-
-/* LOGOUT */
-function logout(){
-localStorage.removeItem("isLoggedIn");
-alert("Logged out");
 location.reload();
+
+}else{
+
+alert("Incorrect username or password.");
+
 }
 
-/* NAV UPDATE */
-window.onload=function(){
-if(localStorage.getItem("isLoggedIn")==="true"){
-document.getElementById("signInNav").style.display="none";
-document.getElementById("signUpNav").style.display="none";
-document.getElementById("profileNav").style.display="block";
-document.getElementById("profileName").innerText=localStorage.getItem("username");
 }
-};
+
+/* ===== PACKAGE ===== */
+
+function showPayment(pkg){
+
+let sound=document.getElementById("clickSound");
+
+sound.currentTime=0;
+
+sound.play();
+
+if(localStorage.getItem("isLoggedIn")!=="true"){
+
+alert("Please sign in first.");
+
+openSignIn();
+
+return;
+
+}
+
+localStorage.setItem("selectedPackage",pkg);
+
+alert("You selected " + pkg);
+
+window.location.href=
+
+"payment.html?package=" +
+
+encodeURIComponent(pkg);
+
+}
+
+/* ===== PROFILE ===== */
+
+function toggleProfileMenu(){
+
+document.getElementById("profileMenu").style.display="block";
+
+document.getElementById("welcomeUser").innerText=
+
+localStorage.getItem("username");
+
+}
+
+/* ===== LOGOUT ===== */
+
+function logout(){
+
+localStorage.removeItem("isLoggedIn");
+
+alert("Logged out successfully.");
+
+location.reload();
+
+}
+
+/* ===== NAV UPDATE ===== */
+
+window.onload=function(){
+
+if(localStorage.getItem("isLoggedIn")==="true"){
+
+document.getElementById("signInNav").style.display="none";
+
+document.getElementById("signUpNav").style.display="none";
+
+document.getElementById("profileNav").style.display="block";
+
+document.getElementById("profileName").innerText=
+
+localStorage.getItem("username");
+
+}
+
+}
 
 </script>
 
